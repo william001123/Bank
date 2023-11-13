@@ -1,0 +1,91 @@
+﻿@model Cliente
+@{
+    ViewData["Title"] = "Cliente";
+}
+
+<div class="row">
+
+
+    <div class="col-5">
+        <div class="card">
+            <div class="card-header">
+                Cliente
+            </div>
+            <div class="card-body">
+
+                <form asp-action="Update" asp-controller="Cliente" asp-route-_id="@Model.Id" method="post">
+
+                    <input id="Id" type="hidden" asp-for="Id" />
+
+                    <div class="mb-2">
+                        <label class="form-label">Número Identificación</label>
+                        <input type="text" disabled class="form-control form-control-sm" asp-for="numeroIdentificacion" />
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">Nombre Completo</label>
+                        <input type="text" disabled class="form-control form-control-sm" asp-for="nombreCompleto" />
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">Dirección</label>
+                        <input type="text" class="form-control form-control-sm" asp-for="direccion" />
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">Teléfono</label>                        
+                        <input type="text" class="form-control form-control-sm" asp-for="telefono" />
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">Correo Electrónico</label>
+                        <input id="strEstado" type="text" disabled class="form-control form-control-sm" asp-for="correoElectronico" />
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">Información laboral</label>
+                        <input id="strEstado" type="text" disabled class="form-control form-control-sm" asp-for="informacionLaboral" />
+                    </div>
+
+                    <button id="btnGuardar" type="submit" class="btn btn-success btn-sm">Actualizar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-5">
+        <div class="card">
+            <div class="card-header">
+                Cuentas
+            </div>
+            <div class="card-body">
+                <hr />
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Número Cuenta</th>
+                            <th>Tipo Cuenta</th>
+                            <th>Saldo Actual</th>
+                            <th>Estado Cuenta</th>
+                            <th>Historial Transacciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.cuentas)
+                        {
+                            <tr>
+                                <td>@item.numeroCuenta</td>
+                                <td>@item.tipoCuenta</td>
+                                <td>@item.saldoActual</td>
+                                <td>@item.estadoCuenta</td>
+                                <td>
+                                    <a asp-action="Index" asp-controller="Historial" asp-route-CuentaOrigen="@item.numeroCuenta" class="btn btn-primary btn-sm">Ver Detalle</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

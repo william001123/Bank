@@ -1,0 +1,31 @@
+﻿@model Autenticacion
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row" style="justify-content: center;">
+    <div class="col-5">
+        <div class="card">
+            <div class="card-header">
+                usuario
+            </div>
+            <div class="card-body">
+
+                <form asp-action="GetOne" asp-controller="Autenticacion" method="post">
+
+                    <div class="mb-2">
+                        <label class="form-label">Usuario</label>
+                        <input type="text" class="form-control form-control-sm" asp-for="usuario" />
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" class="form-control form-control-sm" asp-for="contrasena" />
+                    </div>
+
+                    <button type="submit" class="btn btn-success btn-sm">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
